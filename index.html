@@ -12,106 +12,85 @@
     <style>
         :root {
             --yellow-accent: #facc15;
-            --glass-bg: rgba(255, 255, 255, 0.45);
-            --glass-border: rgba(255, 255, 255, 0.6);
+            --glass-bg: rgba(255, 255, 255, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.8);
         }
         
-        * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #fbfbfd;
+            background-color: #ffffff;
             color: #1d1d1f;
             overflow-x: hidden;
-            line-height: 1.5;
+            line-height: 1.4;
         }
 
         .serif-italic { font-family: 'Playfair Display', serif; font-style: italic; }
 
         /* Curvas de Euler / Clotoide */
-        .clothoid-card { border-radius: 2.5rem; overflow: hidden; }
-        @media (min-width: 768px) { .clothoid-card { border-radius: 4rem; } }
+        .clothoid-card { border-radius: 2.5rem; }
+        @media (min-width: 768px) { .clothoid-card { border-radius: 4.5rem; } }
 
-        /* Estética Liquid Glass */
+        /* Liquid Glass */
         .liquid-glass {
             background: var(--glass-bg);
-            backdrop-filter: blur(25px) saturate(160%);
-            -webkit-backdrop-filter: blur(25px) saturate(160%);
+            backdrop-filter: blur(40px) saturate(180%);
+            -webkit-backdrop-filter: blur(40px) saturate(180%);
             border: 1px solid var(--glass-border);
             box-shadow: 
-                inset 0 1px 1px rgba(255, 255, 255, 0.7),
-                0 20px 40px -10px rgba(0, 0, 0, 0.04);
+                inset 0 1px 1px rgba(255, 255, 255, 1),
+                0 20px 60px -15px rgba(0, 0, 0, 0.05);
         }
 
-        /* Sistema de Reveal corregido */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
         }
-        
-        /* Forzamos visibilidad en el Hero para evitar pantalla vacía al inicio */
-        .reveal-hero { opacity: 1 !important; transform: translateY(0) !important; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         .noise {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: url('https://grainy-gradients.vercel.app/noise.svg');
-            opacity: 0.025;
+            opacity: 0.02;
             pointer-events: none;
             z-index: 9999;
         }
 
         .blob {
             position: fixed;
-            width: 70vw; height: 70vw;
-            max-width: 900px; max-height: 900px;
+            width: 60vw; height: 60vw;
             border-radius: 50%;
-            filter: blur(120px);
+            filter: blur(160px);
             z-index: -1;
-            opacity: 0.2;
+            opacity: 0.1;
             pointer-events: none;
         }
-        .blob-1 { top: -15%; left: -10%; background: #facc15; animation: float 20s infinite ease-in-out; }
-        .blob-2 { bottom: -15%; right: -5%; background: #e4e4e7; animation: float 25s infinite ease-in-out reverse; }
+        .blob-1 { top: -10%; right: -5%; background: #facc15; }
+        .blob-2 { bottom: -10%; left: -5%; background: #e4e4e7; }
         
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(50px, 30px) scale(1.1); }
-        }
-
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        .animate-marquee { display: flex; width: fit-content; animation: marquee 40s linear infinite; }
-
         .testimonial-slide {
             position: absolute;
             inset: 0;
             opacity: 0;
             transform: scale(0.98);
-            transition: all 0.6s ease;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             pointer-events: none;
         }
-        .testimonial-slide.active {
-            opacity: 1;
-            transform: scale(1);
-            pointer-events: auto;
-        }
+        .testimonial-slide.active { opacity: 1; transform: scale(1); pointer-events: auto; }
 
-        /* Inputs con Glassmorphism */
-        input, select, textarea {
-            background: rgba(255, 255, 255, 0.5) !important;
-            border: 1px solid rgba(0, 0, 0, 0.05) !important;
-            transition: all 0.3s ease;
+        /* Mejora Tipográfica Manifiesto */
+        .manifesto-title { 
+            font-size: clamp(2.5rem, 8vw, 7.5rem); 
+            line-height: 0.9; 
+            letter-spacing: -0.05em;
         }
-        input:focus, select:focus {
-            background: white !important;
-            border-color: #facc15 !important;
-            box-shadow: 0 10px 20px -10px rgba(0,0,0,0.1);
-        }
+        
+        .faq-content { max-height: 0; overflow: hidden; transition: all 0.5s ease; opacity: 0; }
+        .faq-item.active .faq-content { max-height: 300px; opacity: 1; padding-top: 1.5rem; }
+        .faq-item.active .faq-icon { transform: rotate(45deg); color: #facc15; }
     </style>
 <script type="importmap">
 {
@@ -122,28 +101,22 @@
 }
 </script>
 </head>
-<body class="bg-[#fbfbfd]">
+<body>
     <div class="noise"></div>
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
     
-    <!-- Navbar -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-6 py-6 md:py-8">
-        <div class="max-w-7xl mx-auto flex items-center justify-between transition-all duration-500 rounded-full px-6 md:px-8 py-3 bg-white/30 backdrop-blur-md border border-white/40 shadow-sm">
-            <a href="#" class="flex items-center gap-1">
-                <span class="text-xl md:text-2xl font-black tracking-tighter">F<span class="text-yellow-400">I</span>LTR<span class="text-yellow-400">.</span></span>
-            </a>
-            
-            <div class="hidden md:flex items-center gap-8 text-[10px] font-bold tracking-[0.2em] uppercase text-black/50">
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-6 py-6 transition-all duration-700">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-8 py-3 rounded-full bg-white/40 backdrop-blur-xl border border-white/60 shadow-sm transition-all duration-700">
+            <a href="#" class="text-2xl font-black tracking-tighter">F<span class="text-yellow-400">I</span>LTR<span class="text-yellow-400">.</span></a>
+            <div class="hidden lg:flex items-center gap-10 text-[10px] font-bold tracking-[0.2em] uppercase text-black/40">
                 <a href="#services" class="hover:text-black transition-colors">Servicios</a>
-                <a href="#manifesto" class="hover:text-black transition-colors">Visión</a>
-                <a href="#packages" class="hover:text-black transition-colors">Planes</a>
-                <a href="#contact" class="bg-black text-white px-5 py-2 rounded-full hover:bg-yellow-400 hover:text-black transition-all">Auditoría Gratis</a>
+                <a href="#process" class="hover:text-black transition-colors">Método</a>
+                <a href="#testimonials" class="hover:text-black transition-colors">Casos</a>
+                <a href="#faq" class="hover:text-black transition-colors">FAQ</a>
+                <a href="#contact" class="bg-black text-white px-6 py-2 rounded-full hover:bg-yellow-400 hover:text-black transition-all">Auditoría Gratis</a>
             </div>
-
-            <button class="md:hidden text-black p-2">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-            </button>
+            <button class="md:hidden text-black"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
         </div>
     </nav>
 
@@ -151,54 +124,34 @@
         <!-- Hero Section -->
         <section id="hero" class="min-h-screen pt-40 pb-20 px-6 max-w-7xl mx-auto flex flex-col justify-center">
             <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-                <div class="reveal reveal-hero">
-                    <h1 class="text-6xl md:text-[8rem] xl:text-[9.5rem] font-black tracking-tighter leading-[0.85] mb-8">
+                <div class="reveal active">
+                    <h1 class="text-7xl md:text-[9.5rem] font-black tracking-tighter leading-none mb-8">
                         F<span class="text-yellow-400">I</span>LTR<span class="text-yellow-400">.</span>
                     </h1>
-                    <p class="serif-italic text-2xl md:text-3xl text-zinc-400 mb-10">
+                    <p class="serif-italic text-3xl text-zinc-300 italic mb-10 block">
                         [ claridad absoluta en la era del ruido ]
                     </p>
-                    <p class="text-xl md:text-2xl font-light leading-relaxed text-zinc-500 max-w-lg mb-8">
+                    <p class="text-xl md:text-2xl font-light leading-relaxed text-zinc-500 max-w-lg mb-10">
                         Depuramos lo ordinario para revelar lo <span class="text-black font-semibold">extraordinario</span>. Estrategias diseñadas para marcas que exigen trascender.
                     </p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-2 h-2 rounded-full bg-yellow-400 animate-pulse"></div>
-                        <span class="text-[9px] font-black uppercase tracking-widest text-zinc-400">Cupos exclusivos Q2 2025</span>
-                    </div>
                 </div>
 
-                <div class="relative reveal reveal-hero">
-                    <div class="liquid-glass clothoid-card p-8 md:p-12 border-white/80 shadow-2xl relative z-10">
+                <div class="reveal active delay-300">
+                    <div class="liquid-glass clothoid-card p-10 md:p-14 border-white/80 shadow-2xl relative z-10 overflow-hidden">
                         <div id="hero-form-container">
-                            <div class="mb-8">
-                                <span class="text-yellow-500 text-[9px] font-black uppercase tracking-[0.4em] mb-3 block">Inicia el Proceso</span>
+                            <div class="mb-10">
+                                <span class="text-yellow-500 text-[10px] font-black uppercase tracking-[0.5em] mb-4 block">Inicia el Proceso</span>
                                 <h2 class="text-3xl font-black tracking-tighter mb-2">Filtrar mi Marca</h2>
                                 <p class="text-zinc-500 text-xs font-light">Detectaremos fugas de autoridad en tu ecosistema.</p>
                             </div>
                             <form id="hero-form" class="space-y-4">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <input required type="text" placeholder="Nombre completo" class="w-full p-4 clothoid-card focus:outline-none text-sm" />
-                                    <input required type="tel" placeholder="Teléfono" class="w-full p-4 clothoid-card focus:outline-none text-sm" />
+                                    <input required type="text" placeholder="Nombre" class="w-full p-4 bg-white/50 border border-zinc-100 clothoid-card focus:outline-none focus:bg-white text-sm" />
+                                    <input required type="tel" placeholder="Teléfono" class="w-full p-4 bg-white/50 border border-zinc-100 clothoid-card focus:outline-none focus:bg-white text-sm" />
                                 </div>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <input required type="email" placeholder="Email corporativo" class="w-full p-4 clothoid-card focus:outline-none text-sm" />
-                                    <input required type="text" placeholder="Usuario RRSS" class="w-full p-4 clothoid-card focus:outline-none text-sm" />
-                                </div>
-                                <div class="relative">
-                                    <select required class="w-full p-4 clothoid-card focus:outline-none appearance-none text-sm text-zinc-500">
-                                        <option value="" disabled selected>Servicio de interés</option>
-                                        <option>Diseño & Branding</option>
-                                        <option>Desarrollo Web</option>
-                                        <option>SEO Estratégico</option>
-                                        <option>SEM & Ads</option>
-                                    </select>
-                                    <div class="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-zinc-300">
-                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><path d="M6 9l6 6 6-6"/></svg>
-                                    </div>
-                                </div>
-                                <button type="submit" class="w-full bg-black text-white px-8 py-5 clothoid-card font-black text-[10px] uppercase tracking-[0.3em] hover:bg-yellow-400 hover:text-black transition-all shadow-xl active:scale-95 flex items-center justify-center gap-4">
+                                <input required type="email" placeholder="Email corporativo" class="w-full p-4 bg-white/50 border border-zinc-100 clothoid-card focus:outline-none focus:bg-white text-sm" />
+                                <button type="submit" class="w-full bg-black text-white px-8 py-5 clothoid-card font-black text-[10px] uppercase tracking-[0.5em] hover:bg-yellow-400 hover:text-black transition-all shadow-xl active:scale-95">
                                     Iniciar Filtrado
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                                 </button>
                             </form>
                         </div>
@@ -207,44 +160,28 @@
             </div>
         </section>
 
-        <!-- Impact Bar -->
-        <section class="py-20 bg-white/30 border-y border-zinc-100">
-            <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-12 text-center lg:text-left">
-                <div class="reveal active">
-                    <div class="text-5xl font-black text-black">90%</div>
-                    <div class="text-[9px] font-black uppercase tracking-widest text-zinc-400 mt-2">Ruido Eliminado</div>
-                </div>
-                <div class="reveal active">
-                    <div class="text-5xl font-black text-black">4.5x</div>
-                    <div class="text-[9px] font-black uppercase tracking-widest text-zinc-400 mt-2">ROI Promedio</div>
-                </div>
-                <div class="reveal active">
-                    <div class="text-5xl font-black text-black">12M+</div>
-                    <div class="text-[9px] font-black uppercase tracking-widest text-zinc-400 mt-2">Alcance Efectivo</div>
-                </div>
-                <div class="reveal active">
-                    <div class="text-5xl font-black text-black">100%</div>
-                    <div class="text-[9px] font-black uppercase tracking-widest text-zinc-400 mt-2">Autoridad Ganada</div>
-                </div>
-            </div>
-        </section>
-
         <!-- Manifesto -->
-        <section id="manifesto" class="bg-[#F6D02A] py-32 md:py-48 px-6 overflow-hidden">
-            <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
-                <div class="reveal">
-                    <div class="bg-white p-12 md:p-16 clothoid-card shadow-2xl transform -rotate-1">
-                        <h2 class="text-5xl md:text-8xl font-black tracking-tighter leading-[0.9] text-black">
-                            Publicar<br /><span class="text-zinc-200">NO</span> es<br />estrategia.
+        <section id="manifesto" class="py-40 px-6 bg-white overflow-hidden border-y border-zinc-50">
+            <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-start gap-16 lg:gap-24">
+                <div class="w-full lg:w-3/5 reveal">
+                    <div class="liquid-glass clothoid-card p-10 md:p-16 lg:p-20 shadow-2xl transform lg:-rotate-1 inline-block min-w-full">
+                        <h2 class="manifesto-title font-black text-black">
+                            Publicar<br />
+                            <span class="text-zinc-100">NO</span> es<br />
+                            estrategia.
                         </h2>
                     </div>
                 </div>
-                <div class="space-y-10 reveal">
-                    <h3 class="text-4xl md:text-6xl font-black tracking-tighter leading-tight text-black">
-                        La visibilidad sin <span class="bg-white px-5 py-2 inline-block rotate-1 shadow-sm">INTENCIÓN</span>
-                    </h3>
-                    <div class="liquid-glass clothoid-card p-10 shadow-lg">
-                        <p class="text-3xl md:text-5xl font-bold tracking-tighter text-black">es solo ruido <span class="text-white drop-shadow-md">DESPERDICIADO.</span></p>
+
+                <div class="w-full lg:w-2/5 reveal delay-300 lg:pt-20">
+                    <div class="space-y-10">
+                        <div class="space-y-4">
+                            <span class="text-yellow-500 text-[10px] font-black uppercase tracking-[0.6em] block">Visión de Autoridad</span>
+                            <h3 class="text-4xl md:text-6xl font-black tracking-tighter leading-tight text-black">La visibilidad sin <br/><span class="bg-yellow-400 px-5 py-1 rotate-1 inline-block shadow-sm">INTENCIÓN</span></h3>
+                        </div>
+                        <p class="text-xl md:text-2xl text-zinc-400 font-light leading-relaxed">
+                            Desafiamos el ruido para desarrollar ecosistemas que transforman la atención en capital tangible. No operamos por inercia, operamos por impacto.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -253,48 +190,118 @@
         <!-- Services -->
         <section id="services" class="py-40 px-6 max-w-7xl mx-auto">
             <div class="text-center mb-24 reveal">
-                <h2 class="text-5xl md:text-7xl font-black tracking-tighter mb-8">Servicios de Élite</h2>
+                <h2 class="text-5xl md:text-7xl font-black tracking-tighter mb-8 leading-tight">Servicios de Élite</h2>
                 <p class="text-xl text-zinc-400 max-w-2xl mx-auto font-light">Depuramos el marketing convencional para entregarte activos de alto rendimiento.</p>
             </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="reveal liquid-glass clothoid-card p-12 border hover:border-yellow-400/30 transition-all group">
-                    <div class="w-14 h-14 bg-black/5 rounded-full mb-8 flex items-center justify-center group-hover:bg-yellow-400 transition-colors">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.5 14.5L2 2l14.5 3.5L12 2z"/></svg>
-                    </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="reveal liquid-glass clothoid-card p-12 group border hover:border-yellow-400/20 transition-all">
+                    <div class="w-14 h-14 bg-black/5 rounded-full mb-8 flex items-center justify-center group-hover:bg-yellow-400 transition-colors"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.5 14.5L2 2l14.5 3.5L12 2z"/></svg></div>
                     <h3 class="text-2xl font-black mb-4 uppercase tracking-tighter">Branding</h3>
-                    <p class="text-zinc-500 font-light leading-relaxed">Identidades visuales diseñadas con precisión quirúrgica para dominar tu nicho.</p>
+                    <p class="text-zinc-500 font-light leading-relaxed">Identidades visuales diseñadas con precisión para dominar tu nicho.</p>
                 </div>
-                <div class="reveal liquid-glass clothoid-card p-12 border hover:border-yellow-400/30 transition-all group">
-                    <div class="w-14 h-14 bg-black/5 rounded-full mb-8 flex items-center justify-center group-hover:bg-yellow-400 transition-colors">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                    </div>
+                <div class="reveal liquid-glass clothoid-card p-12 group border hover:border-yellow-400/20 transition-all delay-75">
+                    <div class="w-14 h-14 bg-black/5 rounded-full mb-8 flex items-center justify-center group-hover:bg-yellow-400 transition-colors"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
                     <h3 class="text-2xl font-black mb-4 uppercase tracking-tighter">Web Experience</h3>
                     <p class="text-zinc-500 font-light leading-relaxed">Interfaces que rinden pleitesía ante la experiencia de usuario y la conversión.</p>
                 </div>
-                <div class="reveal liquid-glass clothoid-card p-12 border hover:border-yellow-400/30 transition-all group">
-                    <div class="w-14 h-14 bg-black/5 rounded-full mb-8 flex items-center justify-center group-hover:bg-yellow-400 transition-colors">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <div class="reveal liquid-glass clothoid-card p-12 group border hover:border-yellow-400/20 transition-all delay-100">
+                    <div class="w-14 h-14 bg-black/5 rounded-full mb-8 flex items-center justify-center group-hover:bg-yellow-400 transition-colors"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+                    <h3 class="text-2xl font-black mb-4 uppercase tracking-tighter">SEO Estratégico</h3>
+                    <p class="text-zinc-500 font-light leading-relaxed">Dominamos el algoritmo para asegurar que tu marca esté siempre en el podio.</p>
+                </div>
+                <div class="reveal liquid-glass clothoid-card p-12 group border hover:border-yellow-400/20 transition-all delay-150">
+                    <div class="w-14 h-14 bg-black/5 rounded-full mb-8 flex items-center justify-center group-hover:bg-yellow-400 transition-colors"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+                    <h3 class="text-2xl font-black mb-4 uppercase tracking-tighter">SEM & Ads</h3>
+                    <p class="text-zinc-500 font-light leading-relaxed">Campañas tácticas diseñadas para capturar atención cualificada al instante.</p>
+                </div>
+                <div class="reveal liquid-glass clothoid-card p-12 group border hover:border-yellow-400/20 transition-all delay-200">
+                    <div class="w-14 h-14 bg-black/5 rounded-full mb-8 flex items-center justify-center group-hover:bg-yellow-400 transition-colors"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+                    <h3 class="text-2xl font-black mb-4 uppercase tracking-tighter">CRM Automation</h3>
+                    <p class="text-zinc-500 font-light leading-relaxed">Aceleramos tu flujo de ventas mediante protocolos de automatización inteligente.</p>
+                </div>
+                <div class="reveal liquid-glass clothoid-card p-12 group border hover:border-yellow-400/20 transition-all delay-300">
+                    <div class="w-14 h-14 bg-black/5 rounded-full mb-8 flex items-center justify-center group-hover:bg-yellow-400 transition-colors"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+                    <h3 class="text-2xl font-black mb-4 uppercase tracking-tighter">Social Media</h3>
+                    <p class="text-zinc-500 font-light leading-relaxed">Construimos narrativas sólidas que transforman audiencia en comunidad leal.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Method Section -->
+        <section id="process" class="py-40 px-6 bg-zinc-50/50">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-32 reveal">
+                    <span class="text-yellow-500 text-[10px] font-black uppercase tracking-[0.6em] mb-4 block">Metodología de Autoridad</span>
+                    <h2 class="text-5xl md:text-[5rem] font-black tracking-tighter mb-8 leading-tight">Protocolo de Evolución</h2>
+                    <p class="text-xl md:text-2xl text-zinc-400 max-w-4xl mx-auto font-light leading-relaxed">Seis dimensiones de transformación diseñadas para marcas que exigen trascender el ruido convencional.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- 01 -->
+                    <div class="reveal liquid-glass clothoid-card p-12 group relative overflow-hidden h-[450px] flex flex-col justify-between">
+                        <span class="text-7xl font-black text-black/5 group-hover:text-yellow-400 transition-colors duration-1000 leading-none">01</span>
+                        <div>
+                            <h3 class="text-3xl font-black tracking-tighter mb-4">Revelar</h3>
+                            <p class="text-zinc-500 font-light leading-relaxed">Desenterrar el ADN latente de tu marca separándolo de las interferencias.</p>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-black mb-4 uppercase tracking-tighter">SEO / SEM</h3>
-                    <p class="text-zinc-500 font-light leading-relaxed">Dominamos el algoritmo para asegurar que tu marca siempre esté en el podio.</p>
+                    <!-- 02 -->
+                    <div class="reveal liquid-glass clothoid-card p-12 group relative overflow-hidden h-[450px] flex flex-col justify-between delay-100">
+                        <span class="text-7xl font-black text-black/5 group-hover:text-yellow-400 transition-colors duration-1000 leading-none">02</span>
+                        <div>
+                            <h3 class="text-3xl font-black tracking-tighter mb-4">Depurar</h3>
+                            <p class="text-zinc-500 font-light leading-relaxed">Eliminar el ruido estratégico purgando métricas irrelevantes.</p>
+                        </div>
+                    </div>
+                    <!-- 03 -->
+                    <div class="reveal liquid-glass clothoid-card p-12 group relative overflow-hidden h-[450px] flex flex-col justify-between delay-200">
+                        <span class="text-7xl font-black text-black/5 group-hover:text-yellow-400 transition-colors duration-1000 leading-none">03</span>
+                        <div>
+                            <h3 class="text-3xl font-black tracking-tighter mb-4">Refinar</h3>
+                            <p class="text-zinc-500 font-light leading-relaxed">Elevación estética absoluta aplicando principios de diseño de clase mundial.</p>
+                        </div>
+                    </div>
+                    <!-- 04 -->
+                    <div class="reveal liquid-glass clothoid-card p-12 group relative overflow-hidden h-[450px] flex flex-col justify-between delay-300">
+                        <span class="text-7xl font-black text-black/5 group-hover:text-yellow-400 transition-colors duration-1000 leading-none">04</span>
+                        <div>
+                            <h3 class="text-3xl font-black tracking-tighter mb-4">Articular</h3>
+                            <p class="text-zinc-500 font-light leading-relaxed">Diseñamos el ecosistema donde tu marca deja de competir por precio para dominar por percepción.</p>
+                        </div>
+                    </div>
+                    <!-- 05 -->
+                    <div class="reveal liquid-glass clothoid-card p-12 group relative overflow-hidden h-[450px] flex flex-col justify-between delay-400">
+                        <span class="text-7xl font-black text-black/5 group-hover:text-yellow-400 transition-colors duration-1000 leading-none">05</span>
+                        <div>
+                            <h3 class="text-3xl font-black tracking-tighter mb-4">Impactar</h3>
+                            <p class="text-zinc-500 font-light leading-relaxed">Activamos canales estratégicos con campañas diseñadas para capturar al 1% superior.</p>
+                        </div>
+                    </div>
+                    <!-- 06 -->
+                    <div class="reveal liquid-glass clothoid-card p-12 group relative overflow-hidden h-[450px] flex flex-col justify-between delay-500">
+                        <span class="text-7xl font-black text-black/5 group-hover:text-yellow-400 transition-colors duration-1000 leading-none">06</span>
+                        <div>
+                            <h3 class="text-3xl font-black tracking-tighter mb-4">Dominar</h3>
+                            <p class="text-zinc-500 font-light leading-relaxed">Implementamos ciclos de optimización basados en datos reales para liderar tu industria.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Testimonials -->
-        <section id="testimonials" class="py-40 px-6 max-w-7xl mx-auto bg-zinc-50/50 rounded-[4rem] mb-20">
+        <section id="testimonials" class="py-40 px-6 max-w-7xl mx-auto">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div class="reveal">
-                    <h2 class="text-5xl md:text-6xl font-black tracking-tighter leading-tight mb-10">Marcas que ya filtraron su futuro.</h2>
+                    <h2 class="text-5xl md:text-8xl font-black tracking-tighter mb-8 leading-tight">Marcas que ya filtraron su futuro.</h2>
                     <div class="flex gap-4">
-                        <button id="prev-testimonial" class="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center hover:bg-black hover:text-white transition-all"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button>
-                        <button id="next-testimonial" class="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center hover:bg-black hover:text-white transition-all"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>
+                        <button id="prev-testimonial" class="w-14 h-14 rounded-full border border-black/10 flex items-center justify-center hover:bg-black hover:text-white transition-all active:scale-90"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button>
+                        <button id="next-testimonial" class="w-14 h-14 rounded-full border border-black/10 flex items-center justify-center hover:bg-black hover:text-white transition-all active:scale-90"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>
                     </div>
                 </div>
-                <div class="relative min-h-[350px]" id="testimonial-container">
+                <div class="relative min-h-[400px]" id="testimonial-container">
                     <div class="testimonial-slide active">
                         <div class="liquid-glass clothoid-card p-12 md:p-16 border border-white shadow-xl h-full flex flex-col justify-center">
-                            <p class="text-2xl md:text-3xl font-light italic text-zinc-600 mb-10">"Antes de FILTR, sentíamos que gritábamos al vacío. Ahora, cada publicación tiene una intención comercial real."</p>
+                            <p class="text-2xl md:text-3xl font-light italic text-zinc-600 mb-10 leading-relaxed">"Antes de FILTR, sentíamos que gritábamos al vacío. Ahora cada publicación tiene una intención comercial real."</p>
                             <div>
                                 <p class="font-bold text-black text-xl">Elena Rossi</p>
                                 <p class="text-[9px] font-black uppercase tracking-widest text-zinc-400 mt-1">CEO Lux Interiors</p>
@@ -303,7 +310,7 @@
                     </div>
                     <div class="testimonial-slide">
                         <div class="liquid-glass clothoid-card p-12 md:p-16 border border-white shadow-xl h-full flex flex-col justify-center">
-                            <p class="text-2xl md:text-3xl font-light italic text-zinc-600 mb-10">"Su método de 'refinamiento' no solo cambió nuestro diseño, cambió la percepción de nuestro valor en el mercado."</p>
+                            <p class="text-2xl md:text-3xl font-light italic text-zinc-600 mb-10 leading-relaxed">"Su método de 'refinamiento' no solo cambió nuestro diseño, cambió la percepción de nuestro valor."</p>
                             <div>
                                 <p class="font-bold text-black text-xl">Marcus Chen</p>
                                 <p class="text-[9px] font-black uppercase tracking-widest text-zinc-400 mt-1">Founder TechNode</p>
@@ -314,31 +321,104 @@
             </div>
         </section>
 
+        <!-- FAQ Section -->
+        <section id="faq" class="py-40 px-6 max-w-4xl mx-auto">
+            <div class="text-center mb-24 reveal">
+                <h2 class="text-5xl md:text-6xl font-black tracking-tighter mb-6 leading-tight">Consultas sin Interferencias</h2>
+                <p class="text-xl text-zinc-400 font-light tracking-wide">Transparencia absoluta antes de iniciar el proceso.</p>
+            </div>
+
+            <div class="space-y-5">
+                <div class="reveal faq-item" style="transition-delay: 0.1s">
+                    <div class="w-full text-left p-10 clothoid-card transition-all duration-700 border liquid-glass border-white hover:border-zinc-300 cursor-pointer">
+                        <div class="flex justify-between items-center gap-6">
+                            <h3 class="text-xl md:text-2xl font-bold tracking-tight pr-4">¿Por qué elegir FILTR y no una agencia convencional?</h3>
+                            <span class="faq-icon flex-shrink-0 w-8 h-8 flex items-center justify-center transition-all duration-700 text-zinc-300">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </span>
+                        </div>
+                        <div class="faq-content">
+                            <p class="text-zinc-500 text-lg font-light leading-relaxed max-w-3xl border-t border-black/5 pt-8">
+                                La mayoría de las agencias optimizan para métricas de vanidad (likes, alcances vacíos). Nosotros filtramos el ruido para enfocarnos exclusivamente en activos de marca que generan autoridad y retorno real.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reveal faq-item" style="transition-delay: 0.2s">
+                    <div class="w-full text-left p-10 clothoid-card transition-all duration-700 border liquid-glass border-white hover:border-zinc-300 cursor-pointer">
+                        <div class="flex justify-between items-center gap-6">
+                            <h3 class="text-xl md:text-2xl font-bold tracking-tight pr-4">¿Cómo garantizan la calidad del posicionamiento?</h3>
+                            <span class="faq-icon flex-shrink-0 w-8 h-8 flex items-center justify-center transition-all duration-700 text-zinc-300">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </span>
+                        </div>
+                        <div class="faq-content">
+                            <p class="text-zinc-500 text-lg font-light leading-relaxed max-w-3xl border-t border-black/5 pt-8">
+                                No medimos el éxito por la viralidad efímera, sino por la solidez del ecosistema digital. Si una pieza de contenido no tiene una intención comercial o de branding clara, no sale de nuestro filtro.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal faq-item" style="transition-delay: 0.3s">
+                    <div class="w-full text-left p-10 clothoid-card transition-all duration-700 border liquid-glass border-white hover:border-zinc-300 cursor-pointer">
+                        <div class="flex justify-between items-center gap-6">
+                            <h3 class="text-xl md:text-2xl font-bold tracking-tight pr-4">¿FILTR admite a cualquier tipo de marca?</h3>
+                            <span class="faq-icon flex-shrink-0 w-8 h-8 flex items-center justify-center transition-all duration-700 text-zinc-300">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </span>
+                        </div>
+                        <div class="faq-content">
+                            <p class="text-zinc-500 text-lg font-light leading-relaxed max-w-3xl border-t border-black/5 pt-8">
+                                No. Somos selectivos. Trabajamos con marcas que poseen un producto de excelencia y el deseo de liderar su categoría. Nuestro método requiere una base de calidad para ser efectivo.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal faq-item" style="transition-delay: 0.4s">
+                    <div class="w-full text-left p-10 clothoid-card transition-all duration-700 border liquid-glass border-white hover:border-zinc-300 cursor-pointer">
+                        <div class="flex justify-between items-center gap-6">
+                            <h3 class="text-xl md:text-2xl font-bold tracking-tight pr-4">¿En cuánto tiempo se percibe el refinamiento?</h3>
+                            <span class="faq-icon flex-shrink-0 w-8 h-8 flex items-center justify-center transition-all duration-700 text-zinc-300">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </span>
+                        </div>
+                        <div class="faq-content">
+                            <p class="text-zinc-500 text-lg font-light leading-relaxed max-w-3xl border-t border-black/5 pt-8">
+                                El cambio en la percepción de marca es instantáneo tras la implementación visual. La escala comercial y la optimización de canales suelen consolidarse entre los primeros 60 a 90 días.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Final Contact -->
         <section id="contact" class="py-48 px-6 bg-black text-white relative">
             <div class="max-w-4xl mx-auto text-center reveal">
-                <h2 class="text-5xl md:text-8xl font-black tracking-tighter mb-12 italic serif-italic">Solicita tu <span class="text-yellow-400">Filtro de Marca.</span></h2>
-                <div class="bg-white/5 p-8 md:p-16 clothoid-card border border-white/10 backdrop-blur-2xl mb-12" id="contact-form-wrapper">
-                    <p class="text-xl text-zinc-400 mb-12 font-light">Auditoría de "Ruido vs. Autoridad" sin costo.</p>
+                <h2 class="text-5xl md:text-9xl font-black tracking-tighter mb-12 italic serif-italic leading-none">Solicita tu <br/><span class="text-yellow-400">Filtro de Marca.</span></h2>
+                <div class="bg-white/5 p-12 md:p-16 clothoid-card border border-white/10 backdrop-blur-2xl mb-12" id="contact-form-wrapper">
                     <form id="contact-form" class="space-y-6">
                         <div class="grid md:grid-cols-2 gap-6">
-                            <input required type="text" placeholder="Nombre de tu Marca" class="bg-white/5 border border-white/10 p-6 clothoid-card focus:outline-none text-white" />
-                            <input required type="email" placeholder="Email Corporativo" class="bg-white/5 border border-white/10 p-6 clothoid-card focus:outline-none text-white" />
+                            <input required type="text" placeholder="Nombre Marca" class="bg-white/5 border border-white/10 p-6 clothoid-card focus:outline-none text-white text-lg" />
+                            <input required type="email" placeholder="Email Corporativo" class="bg-white/5 border border-white/10 p-6 clothoid-card focus:outline-none text-white text-lg" />
                         </div>
-                        <button type="submit" class="w-full bg-yellow-400 text-black px-12 py-6 clothoid-card text-xl font-bold hover:bg-white transition-all shadow-2xl active:scale-95">Obtener Auditoría Gratuita</button>
+                        <button type="submit" class="w-full bg-yellow-400 text-black px-12 py-7 clothoid-card text-xl font-bold hover:bg-white transition-all shadow-2xl active:scale-95">Obtener Auditoría Gratuita</button>
                     </form>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="py-20 px-6 border-t border-zinc-100 bg-white">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
+    <footer class="py-24 px-6 border-t border-zinc-100 bg-white">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12 text-center md:text-left">
             <div>
                 <span class="text-4xl font-black tracking-tighter">F<span class="text-yellow-400">I</span>LTR<span class="text-yellow-400">.</span></span>
-                <p class="text-zinc-400 mt-4 font-light">Elevamos la calidad, eliminamos el ruido.</p>
+                <p class="text-zinc-400 mt-4 font-light text-xl italic">Elevamos la calidad, eliminamos el ruido.</p>
             </div>
-            <div class="flex gap-10 text-[10px] font-bold uppercase tracking-[0.4em] text-zinc-400">
+            <div class="flex gap-12 text-[10px] font-bold uppercase tracking-[0.5em] text-zinc-400">
                 <a href="#" class="hover:text-yellow-500 transition-colors">LinkedIn</a>
                 <a href="#" class="hover:text-yellow-500 transition-colors">Instagram</a>
                 <a href="#" class="hover:text-yellow-500 transition-colors">TikTok</a>
@@ -346,20 +426,6 @@
         </div>
     </footer>
 
-    <!-- Lógica de Reveal Inline para asegurar ejecución inmediata -->
-    <script>
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        window.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-        });
-    </script>
     <script type="module" src="index.tsx"></script>
 </body>
 </html>

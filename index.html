@@ -19,18 +19,15 @@
 </head>
 
 <body>
-
   <!-- HEADER -->
   <header class="header glass">
     <div class="container header-inner">
-      <div class="logo">
-        <span class="logo-text">F<span class="logo-i">i</span>LTR<span class="logo-dot">.</span></span>
-      </div>
+      <span class="logo-text">F<span class="logo-i">i</span>LTR<span class="logo-dot">.</span></span>
 
       <nav class="nav">
         <a href="#servicios" data-i18n="nav.services"></a>
         <a href="#metodo" data-i18n="nav.method"></a>
-        <a href="#planes" data-i18n="nav.plans"></a>
+        <a href="#paquetes" data-i18n="nav.packages"></a>
         <a href="#casos" data-i18n="nav.cases"></a>
         <a href="#faq" data-i18n="nav.faq"></a>
       </nav>
@@ -44,7 +41,7 @@
   </header>
 
   <!-- HERO -->
-  <section class="hero reveal" id="top">
+  <section class="hero reveal">
     <div class="container hero-grid">
       <div class="hero-left">
         <div class="kicker" data-i18n="hero.kicker"></div>
@@ -57,36 +54,39 @@
         </div>
 
         <p class="hero-note" data-i18n="hero.note"></p>
-
-        <div class="hero-pills">
-          <span class="pill" data-i18n="hero.pill1"></span>
-          <span class="pill" data-i18n="hero.pill2"></span>
-          <span class="pill" data-i18n="hero.pill3"></span>
-        </div>
       </div>
 
       <div class="hero-right">
-        <div class="hero-card glass">
-          <div class="hero-card-title" data-i18n="hero.card.title"></div>
-          <div class="hero-card-sub" data-i18n="hero.card.sub"></div>
+        <div class="hero-panel glass">
+          <div class="hero-panel-top">
+            <div class="hero-panel-title" data-i18n="hero.panel.title"></div>
+            <div class="hero-panel-sub" data-i18n="hero.panel.sub"></div>
+          </div>
 
-          <div class="hero-card-list">
-            <div class="mini">
-              <span class="dot"></span>
-              <span data-i18n="hero.card.b1"></span>
+          <div class="chips">
+            <span class="chip" data-i18n="hero.panel.chip1"></span>
+            <span class="chip" data-i18n="hero.panel.chip2"></span>
+            <span class="chip" data-i18n="hero.panel.chip3"></span>
+          </div>
+
+          <div class="mini-divider"></div>
+
+          <div class="hero-panel-list">
+            <div class="tick">
+              <span class="tick-dot"></span>
+              <span data-i18n="hero.panel.li1"></span>
             </div>
-            <div class="mini">
-              <span class="dot"></span>
-              <span data-i18n="hero.card.b2"></span>
+            <div class="tick">
+              <span class="tick-dot"></span>
+              <span data-i18n="hero.panel.li2"></span>
             </div>
-            <div class="mini">
-              <span class="dot"></span>
-              <span data-i18n="hero.card.b3"></span>
+            <div class="tick">
+              <span class="tick-dot"></span>
+              <span data-i18n="hero.panel.li3"></span>
             </div>
           </div>
 
-          <a href="#contacto" class="btn primary hero-card-cta" data-i18n="hero.card.cta"></a>
-          <div class="hero-card-fine" data-i18n="hero.card.fine"></div>
+          <a href="#contacto" class="btn primary hero-panel-cta" data-i18n="hero.panel.cta"></a>
         </div>
       </div>
     </div>
@@ -98,59 +98,64 @@
       <h2 data-i18n="services.title"></h2>
       <p data-i18n="services.subtitle"></p>
 
-      <div class="grid services-grid">
-        <div class="service card glass">
-          <div class="icon">
-            <!-- megaphone line icon -->
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M12 7H7a3 3 0 0 0 0 6h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-              <path d="M12 7l7-3v16l-7-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M7 13l1.2 6a2 2 0 0 0 2 1.6h1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <div class="cards-3">
+        <div class="card glass card-service">
+          <div class="icon-wrap">
+            <!-- Megáfono -->
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M3 11v2c0 1.1.9 2 2 2h2l5 4V5L7 9H5c-1.1 0-2 .9-2 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M16 8c1.7 1.3 1.7 6.7 0 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M19 6c3 2.2 3 9.8 0 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </div>
-          <div class="service-title" data-i18n="services.s1.title"></div>
-          <div class="service-desc" data-i18n="services.s1.desc"></div>
-          <div class="chips">
-            <span class="chip" data-i18n="services.s1.c1"></span>
-            <span class="chip" data-i18n="services.s1.c2"></span>
-            <span class="chip" data-i18n="services.s1.c3"></span>
+
+          <div class="card-title" data-i18n="services.s1.title"></div>
+          <div class="card-desc" data-i18n="services.s1.desc"></div>
+
+          <div class="tag-row">
+            <span class="tag" data-i18n="services.s1.tag1"></span>
+            <span class="tag" data-i18n="services.s1.tag2"></span>
+            <span class="tag" data-i18n="services.s1.tag3"></span>
           </div>
         </div>
 
-        <div class="service card glass">
-          <div class="icon">
-            <!-- compass line icon -->
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" stroke="currentColor" stroke-width="1.8"/>
-              <path d="M15.5 8.5l-2 7-7 2 2-7 7-2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-              <path d="M12 12l3.5-3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        <div class="card glass card-service">
+          <div class="icon-wrap">
+            <!-- Brújula -->
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+              <path d="M14.5 9.5 10 10l-.5 4.5L14 14l.5-4.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M10 10 14.5 9.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </div>
-          <div class="service-title" data-i18n="services.s2.title"></div>
-          <div class="service-desc" data-i18n="services.s2.desc"></div>
-          <div class="chips">
-            <span class="chip" data-i18n="services.s2.c1"></span>
-            <span class="chip" data-i18n="services.s2.c2"></span>
-            <span class="chip" data-i18n="services.s2.c3"></span>
+
+          <div class="card-title" data-i18n="services.s2.title"></div>
+          <div class="card-desc" data-i18n="services.s2.desc"></div>
+
+          <div class="tag-row">
+            <span class="tag" data-i18n="services.s2.tag1"></span>
+            <span class="tag" data-i18n="services.s2.tag2"></span>
+            <span class="tag" data-i18n="services.s2.tag3"></span>
           </div>
         </div>
 
-        <div class="service card glass">
-          <div class="icon">
-            <!-- wand/sparkle line icon -->
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M14 3l-1 3-3 1 3 1 1 3 1-3 3-1-3-1-1-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-              <path d="M5 12l7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-              <path d="M8 9l7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-              <path d="M4 16l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        <div class="card glass card-service">
+          <div class="icon-wrap">
+            <!-- Spark -->
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 2l1.2 4.3L17.5 8 13.2 9.2 12 13.5 10.8 9.2 6.5 8l4.3-1.7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M19 13l.7 2.2 2.3.8-2.3.8L19 19l-.7-2.2L16 16l2.3-.8L19 13Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M4 14l.7 2.2 2.3.8-2.3.8L4 20l-.7-2.2L1 17l2.3-.8L4 14Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
             </svg>
           </div>
-          <div class="service-title" data-i18n="services.s3.title"></div>
-          <div class="service-desc" data-i18n="services.s3.desc"></div>
-          <div class="chips">
-            <span class="chip" data-i18n="services.s3.c1"></span>
-            <span class="chip" data-i18n="services.s3.c2"></span>
-            <span class="chip" data-i18n="services.s3.c3"></span>
+
+          <div class="card-title" data-i18n="services.s3.title"></div>
+          <div class="card-desc" data-i18n="services.s3.desc"></div>
+
+          <div class="tag-row">
+            <span class="tag" data-i18n="services.s3.tag1"></span>
+            <span class="tag" data-i18n="services.s3.tag2"></span>
+            <span class="tag" data-i18n="services.s3.tag3"></span>
           </div>
         </div>
       </div>
@@ -159,165 +164,142 @@
 
   <!-- MÉTODO -->
   <section id="metodo" class="section dark reveal">
-    <div class="container dark-card">
+    <div class="container">
       <h2 data-i18n="method.title"></h2>
       <p data-i18n="method.desc"></p>
 
-      <div class="grid method-grid">
-        <div class="card glass step">
-          <div class="step-top">
-            <div class="step-kicker" data-i18n="method.step1.kicker"></div>
-            <div class="step-title" data-i18n="method.step1.title"></div>
-          </div>
-          <div class="step-desc" data-i18n="method.step1.desc"></div>
-          <div class="step-out" data-i18n="method.step1.out"></div>
+      <div class="cards-3 method-cards">
+        <div class="card glass card-step">
+          <div class="step-kicker"><span data-i18n="method.step1.kicker"></span></div>
+          <div class="card-title" data-i18n="method.step1.title"></div>
+          <div class="card-desc" data-i18n="method.step1.desc"></div>
         </div>
 
-        <div class="card glass step">
-          <div class="step-top">
-            <div class="step-kicker" data-i18n="method.step2.kicker"></div>
-            <div class="step-title" data-i18n="method.step2.title"></div>
-          </div>
-          <div class="step-desc" data-i18n="method.step2.desc"></div>
-          <div class="step-out" data-i18n="method.step2.out"></div>
+        <div class="card glass card-step">
+          <div class="step-kicker"><span data-i18n="method.step2.kicker"></span></div>
+          <div class="card-title" data-i18n="method.step2.title"></div>
+          <div class="card-desc" data-i18n="method.step2.desc"></div>
         </div>
 
-        <div class="card glass step">
-          <div class="step-top">
-            <div class="step-kicker" data-i18n="method.step3.kicker"></div>
-            <div class="step-title" data-i18n="method.step3.title"></div>
-          </div>
-          <div class="step-desc" data-i18n="method.step3.desc"></div>
-          <div class="step-out" data-i18n="method.step3.out"></div>
+        <div class="card glass card-step">
+          <div class="step-kicker"><span data-i18n="method.step3.kicker"></span></div>
+          <div class="card-title" data-i18n="method.step3.title"></div>
+          <div class="card-desc" data-i18n="method.step3.desc"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PLANES -->
-  <section id="planes" class="section reveal">
+  <!-- PAQUETES -->
+  <section id="paquetes" class="section reveal">
     <div class="container">
-      <h2 data-i18n="plans.title"></h2>
-      <p data-i18n="plans.subtitle"></p>
+      <h2 data-i18n="packages.title"></h2>
+      <p data-i18n="packages.subtitle"></p>
 
       <div class="pricing">
-        <!-- GOOD -->
-        <div class="price glass">
+        <!-- ESSENTIAL -->
+        <div class="price-card glass">
           <div class="price-head">
             <div class="price-icon">
-              <!-- magnifier -->
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M10.5 18a7.5 7.5 0 1 0 0-15 7.5 7.5 0 0 0 0 15Z" stroke="currentColor" stroke-width="1.8"/>
-                <path d="M16.5 16.5 21 21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <!-- Lupa -->
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
+                <path d="M20 20l-4.2-4.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
               </svg>
             </div>
-            <div>
-              <div class="price-name" data-i18n="plans.good.name"></div>
-              <div class="price-tag" data-i18n="plans.good.tag"></div>
-            </div>
+            <div class="price-name" data-i18n="packages.good.name"></div>
+            <div class="price-tagline" data-i18n="packages.good.tagline"></div>
           </div>
 
-          <div class="price-value">
-            <span class="from" data-i18n="plans.from"></span>
-            <span class="amount" data-i18n="plans.good.price"></span>
-            <span class="per" data-i18n="plans.per"></span>
+          <div class="price">
+            <span class="price-from" data-i18n="packages.from"></span>
+            <span class="price-value" data-i18n="packages.good.price"></span>
+            <span class="price-period" data-i18n="packages.perMonth"></span>
           </div>
-
-          <div class="price-desc" data-i18n="plans.good.desc"></div>
 
           <div class="price-list">
-            <div class="li"><span class="check"></span><span data-i18n="plans.good.f1"></span></div>
-            <div class="li"><span class="check"></span><span data-i18n="plans.good.f2"></span></div>
-            <div class="li"><span class="check"></span><span data-i18n="plans.good.f3"></span></div>
-            <div class="li"><span class="check"></span><span data-i18n="plans.good.f4"></span></div>
-            <div class="li"><span class="check"></span><span data-i18n="plans.good.f5"></span></div>
+            <div class="li" data-i18n="packages.good.li1"></div>
+            <div class="li" data-i18n="packages.good.li2"></div>
+            <div class="li" data-i18n="packages.good.li3"></div>
+            <div class="li" data-i18n="packages.good.li4"></div>
+            <div class="li" data-i18n="packages.good.li5"></div>
           </div>
 
-          <a href="#contacto" class="btn price-cta" data-i18n="plans.cta"></a>
-          <div class="fine" data-i18n="plans.fine"></div>
+          <a href="#contacto" class="btn price-cta" data-i18n="packages.cta"></a>
+          <div class="price-foot" data-i18n="packages.good.foot"></div>
         </div>
 
-        <!-- BETTER (featured) -->
-        <div class="price glass featured">
-          <div class="badge" data-i18n="plans.badge"></div>
+        <!-- GROWTH (FEATURED) -->
+        <div class="price-card glass featured">
+          <div class="badge" data-i18n="packages.badge"></div>
 
           <div class="price-head">
             <div class="price-icon">
-              <!-- chart up -->
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M4 19V5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M4 19h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M7 14l4-4 3 3 5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- Chart -->
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 19V5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M4 19h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M7 14l3-3 3 2 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
-            <div>
-              <div class="price-name" data-i18n="plans.better.name"></div>
-              <div class="price-tag" data-i18n="plans.better.tag"></div>
-            </div>
+            <div class="price-name" data-i18n="packages.better.name"></div>
+            <div class="price-tagline" data-i18n="packages.better.tagline"></div>
           </div>
 
-          <div class="price-value">
-            <span class="from" data-i18n="plans.from"></span>
-            <span class="amount" data-i18n="plans.better.price"></span>
-            <span class="per" data-i18n="plans.per"></span>
+          <div class="price">
+            <span class="price-from" data-i18n="packages.from"></span>
+            <span class="price-value" data-i18n="packages.better.price"></span>
+            <span class="price-period" data-i18n="packages.perMonth"></span>
           </div>
-
-          <div class="price-desc" data-i18n="plans.better.desc"></div>
 
           <div class="price-list">
-            <div class="li"><span class="check"></span><span data-i18n="plans.better.f1"></span></div>
-            <div class="li"><span class="check"></span><span data-i18n="plans.better.f2"></span></div>
-            <div class="li"><span class="check"></span><span data-i18n="plans.better.f3"></span></div>
-            <div class="li"><span class="check"></span><span data-i18n="plans.better.f4"></span></div>
-            <div class="li"><span class="check"></span><span data-i18n="plans.better.f5"></span></div>
-            <div class="li"><span class="check"></span><span data-i18n="plans.better.f6"></span></div>
+            <div class="li" data-i18n="packages.better.li1"></div>
+            <div class="li" data-i18n="packages.better.li2"></div>
+            <div class="li" data-i18n="packages.better.li3"></div>
+            <div class="li" data-i18n="packages.better.li4"></div>
+            <div class="li" data-i18n="packages.better.li5"></div>
+            <div class="li" data-i18n="packages.better.li6"></div>
           </div>
 
-          <a href="#contacto" class="btn primary price-cta" data-i18n="plans.cta"></a>
-          <div class="fine" data-i18n="plans.fine"></div>
+          <a href="#contacto" class="btn primary price-cta" data-i18n="packages.ctaPrimary"></a>
+          <div class="price-foot" data-i18n="packages.better.foot"></div>
         </div>
 
-        <!-- BEST -->
-        <div class="price glass">
+        <!-- AUTHORITY -->
+        <div class="price-card glass">
           <div class="price-head">
             <div class="price-icon">
-              <!-- crown -->
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M4 9l4 4 4-7 4 7 4-4v9H4V9Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                <path d="M6 20h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <!-- Crown -->
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 9l4 4 4-7 4 7 4-4v10H4V9Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M6 19h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
               </svg>
             </div>
-            <div>
-              <div class="price-name" data-i18n="plans.best.name"></div>
-              <div class="price-tag" data-i18n="plans.best.tag"></div>
-            </div>
+            <div class="price-name" data-i18n="packages.best.name"></div>
+            <div class="price-tagline" data-i18n="packages.best.tagline"></div>
           </div>
 
-          <div class="price-value">
-            <span class="from" data-i18n="plans.from"></span>
-            <span class="amount" data-i18n="plans.best.price"></span>
-            <span class="per" data-i18n="plans.per"></span>
+          <div class="price">
+            <span class="price-from" data-i18n="packages.from"></span>
+            <span class="price-value" data-i18n="packages.best.price"></span>
+            <span class="price-period" data-i18n="packages.perMonth"></span>
           </div>
-
-          <div class="price-desc" data-i18n="plans.best.desc"></div>
 
           <div class="price-list">
-            <div class="li"><span class="check"></span><span data-i18n="plans.best.f1"></span></div>
-            <div class="li"><span class="check"></span><span data-i18n="plans.best.f2"></span></div>
-            <div class="li"><span class="check"></span><span data-i18n="plans.best.f3"></span></div>
-            <div class="li"><span class="check"></span><span data-i18n="plans.best.f4"></span></div>
-            <div class="li"><span class="check"></span><span data-i18n="plans.best.f5"></span></div>
-            <div class="li"><span class="check"></span><span data-i18n="plans.best.f6"></span></div>
+            <div class="li" data-i18n="packages.best.li1"></div>
+            <div class="li" data-i18n="packages.best.li2"></div>
+            <div class="li" data-i18n="packages.best.li3"></div>
+            <div class="li" data-i18n="packages.best.li4"></div>
+            <div class="li" data-i18n="packages.best.li5"></div>
+            <div class="li" data-i18n="packages.best.li6"></div>
           </div>
 
-          <a href="#contacto" class="btn price-cta" data-i18n="plans.cta"></a>
-          <div class="fine" data-i18n="plans.fine"></div>
+          <a href="#contacto" class="btn price-cta" data-i18n="packages.cta"></a>
+          <div class="price-foot" data-i18n="packages.best.foot"></div>
         </div>
       </div>
 
-      <div class="plans-foot">
-        <div class="plans-note" data-i18n="plans.note"></div>
-      </div>
+      <p class="packages-note" data-i18n="packages.note"></p>
     </div>
   </section>
 
@@ -327,48 +309,27 @@
       <h2 data-i18n="cases.title"></h2>
       <p data-i18n="cases.desc"></p>
 
-      <div class="grid cases-grid">
-        <div class="card glass case">
-          <div class="case-top">
-            <div class="case-name" data-i18n="cases.c1.title"></div>
-            <div class="case-pill" data-i18n="cases.c1.pill"></div>
-          </div>
-          <div class="case-metric" data-i18n="cases.c1.metric"></div>
+      <div class="cards-3">
+        <div class="card glass card-case">
+          <div class="case-title" data-i18n="cases.c1.title"></div>
           <div class="case-desc" data-i18n="cases.c1.desc"></div>
-          <div class="case-mini">
-            <span data-i18n="cases.c1.m1"></span>
-            <span data-i18n="cases.c1.m2"></span>
-          </div>
+          <div class="case-metric" data-i18n="cases.c1.metric"></div>
         </div>
 
-        <div class="card glass case">
-          <div class="case-top">
-            <div class="case-name" data-i18n="cases.c2.title"></div>
-            <div class="case-pill" data-i18n="cases.c2.pill"></div>
-          </div>
-          <div class="case-metric" data-i18n="cases.c2.metric"></div>
+        <div class="card glass card-case">
+          <div class="case-title" data-i18n="cases.c2.title"></div>
           <div class="case-desc" data-i18n="cases.c2.desc"></div>
-          <div class="case-mini">
-            <span data-i18n="cases.c2.m1"></span>
-            <span data-i18n="cases.c2.m2"></span>
-          </div>
+          <div class="case-metric" data-i18n="cases.c2.metric"></div>
         </div>
 
-        <div class="card glass case">
-          <div class="case-top">
-            <div class="case-name" data-i18n="cases.c3.title"></div>
-            <div class="case-pill" data-i18n="cases.c3.pill"></div>
-          </div>
-          <div class="case-metric" data-i18n="cases.c3.metric"></div>
+        <div class="card glass card-case">
+          <div class="case-title" data-i18n="cases.c3.title"></div>
           <div class="case-desc" data-i18n="cases.c3.desc"></div>
-          <div class="case-mini">
-            <span data-i18n="cases.c3.m1"></span>
-            <span data-i18n="cases.c3.m2"></span>
-          </div>
+          <div class="case-metric" data-i18n="cases.c3.metric"></div>
         </div>
       </div>
 
-      <p class="fine cases-note" data-i18n="cases.note"></p>
+      <p class="small-note" data-i18n="cases.note"></p>
     </div>
   </section>
 
@@ -405,7 +366,7 @@
 
   <!-- CONTACTO -->
   <section id="contacto" class="section dark reveal">
-    <div class="container dark-card">
+    <div class="container">
       <h2 data-i18n="contact.title"></h2>
       <p data-i18n="contact.desc"></p>
 
@@ -417,20 +378,15 @@
         <button class="btn primary" data-i18n="contact.cta" type="submit"></button>
       </form>
 
-      <p class="fine" data-i18n="contact.note"></p>
+      <p class="small-note" data-i18n="contact.note"></p>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container footer-inner">
-      <div class="footer-left">
-        <div class="footer-brand">FILTR<span class="footer-dot">.</span></div>
-        <div class="fine" data-i18n="footer.note"></div>
-      </div>
-      <div class="footer-right">
-        <a href="#top" class="btn" data-i18n="footer.back"></a>
-      </div>
+      <div class="footer-brand">FILTR<span class="logo-dot">.</span></div>
+      <div class="footer-note" data-i18n="footer.note"></div>
     </div>
   </footer>
 

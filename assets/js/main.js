@@ -1,14 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   /* Reveal */
-  const reveal = () => {
-    const els = document.querySelectorAll(".reveal");
-    if (!els.length) return;
-
-    if (!("IntersectionObserver" in window)) {
-      els.forEach((el) => el.classList.add("active"));
-      return;
-    }
-
+  const revealEls = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
@@ -20,39 +13,31 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       { threshold: 0.15 }
     );
-
-    els.forEach((el) => io.observe(el));
-  };
+    revealEls.forEach((el) => io.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add("active"));
+  }
 
   /* Theme */
-  const initTheme = () => {
-    const html = document.documentElement;
-    const btn = document.getElementById("theme-toggle");
-    if (!btn) return;
-
+  const html = document.documentElement;
+  const themeBtn = document.getElementById("theme-toggle");
+  if (themeBtn) {
     let theme = localStorage.getItem("theme") || "light";
     html.setAttribute("data-theme", theme);
-    btn.textContent = theme === "dark" ? "☀︎" : "☾";
+    themeBtn.textContent = theme === "dark" ? "☀︎" : "☾";
 
-    btn.addEventListener("click", () => {
+    themeBtn.addEventListener("click", () => {
       theme = html.getAttribute("data-theme") === "dark" ? "light" : "dark";
       html.setAttribute("data-theme", theme);
       localStorage.setItem("theme", theme);
-      btn.textContent = theme === "dark" ? "☀︎" : "☾";
+      themeBtn.textContent = theme === "dark" ? "☀︎" : "☾";
     });
-  };
+  }
 
   /* Language */
-  const initI18n = () => {
-    const langBtn = document.getElementById("lang-toggle");
-    if (!langBtn) return;
-
-    const dict = window.I18N;
-    if (!dict) {
-      console.error("I18N not found. Check assets/js/i18n.js path/name.");
-      return;
-    }
-
+  const langBtn = document.getElementById("lang-toggle");
+  const dict = window.I18N;
+  if (langBtn && dict) {
     let lang = localStorage.getItem("lang") || "es";
 
     const applyLang = (l) => {
@@ -79,13 +64,11 @@ document.addEventListener("DOMContentLoaded", () => {
       lang = lang === "es" ? "en" : "es";
       applyLang(lang);
     });
-  };
+  }
 
   /* FAQ accordion */
-  const initFAQ = () => {
-    const items = document.querySelectorAll(".faq-item");
-    if (!items.length) return;
-
+  const items = document.querySelectorAll(".faq-item");
+  if (items.length) {
     items.forEach((item) => {
       const btn = item.querySelector(".faq-question");
       if (!btn) return;
@@ -96,10 +79,5 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!isOpen) item.classList.add("open");
       });
     });
-  };
-
-  reveal();
-  initTheme();
-  initI18n();
-  initFAQ();
+  }
 });

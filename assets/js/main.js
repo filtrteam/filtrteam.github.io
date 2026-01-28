@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  /* ---------------------------
-     Reveal (safe)
-  --------------------------- */
+  /* Reveal */
   const reveal = () => {
     const els = document.querySelectorAll(".reveal");
     if (!els.length) return;
@@ -26,9 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     els.forEach((el) => io.observe(el));
   };
 
-  /* ---------------------------
-     Theme (safe)
-  --------------------------- */
+  /* Theme */
   const initTheme = () => {
     const html = document.documentElement;
     const btn = document.getElementById("theme-toggle");
@@ -46,14 +42,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  /* ---------------------------
-     Language (bulletproof)
-  --------------------------- */
+  /* Language */
   const initI18n = () => {
     const langBtn = document.getElementById("lang-toggle");
     if (!langBtn) return;
 
-    const dict = window.I18N; // IMPORTANT: window.I18N
+    const dict = window.I18N;
     if (!dict) {
       console.error("I18N not found. Check assets/js/i18n.js path/name.");
       return;
@@ -62,14 +56,12 @@ document.addEventListener("DOMContentLoaded", () => {
     let lang = localStorage.getItem("lang") || "es";
 
     const applyLang = (l) => {
-      // Texts
       document.querySelectorAll("[data-i18n]").forEach((el) => {
         const key = el.getAttribute("data-i18n");
         const val = dict?.[l]?.[key];
         if (val) el.textContent = val;
       });
 
-      // Placeholders
       document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
         const key = el.getAttribute("data-i18n-placeholder");
         const val = dict?.[l]?.[key];
@@ -89,9 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  /* ---------------------------
-     FAQ accordion (safe)
-  --------------------------- */
+  /* FAQ accordion */
   const initFAQ = () => {
     const items = document.querySelectorAll(".faq-item");
     if (!items.length) return;
@@ -108,7 +98,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // Run
   reveal();
   initTheme();
   initI18n();

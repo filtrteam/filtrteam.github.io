@@ -1,752 +1,234 @@
-/* =========================
-   FILTR — Liquid Glass (Apple-like)
-   ========================= */
+window.I18N = {
+  es: {
+    "nav.services": "Servicios",
+    "nav.method": "Método",
+    "nav.packages": "Paquetes",
+    "nav.cases": "Casos",
+    "nav.faq": "FAQ",
+    "nav.cta": "Agendar llamada",
 
-* { box-sizing: border-box; }
-html, body { height: 100%; }
-body {
-  margin: 0;
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-}
+    "hero.kicker": "Sistema de Autoridad Digital",
+    "hero.title": "Filtramos el ruido para revelar la autoridad real de tu marca.",
+    "hero.subtitle": "Estrategia, performance y claridad para marcas que quieren crecer con sentido.",
+    "hero.cta": "Agendar llamada",
+    "hero.secondary": "Ver método",
+    "hero.note": "Sin promesas vacías. Solo claridad, ejecución y resultados medibles.",
 
-:root{
-  --filtr-yellow:#F7C600;
+    "hero.panel.title": "Inicio rápido (sin fricción)",
+    "hero.panel.sub": "Una llamada estratégica para entender tu contexto y definir próximos pasos.",
+    "hero.panel.chip1": "Estrategia",
+    "hero.panel.chip2": "Performance",
+    "hero.panel.chip3": "Claridad",
+    "hero.panel.li1": "Diagnóstico de canal, mensaje y funnel",
+    "hero.panel.li2": "Roadmap simple con quick wins",
+    "hero.panel.li3": "Decisión clara: fit o no-fit",
+    "hero.panel.cta": "Agendar ahora",
 
-  --text: rgba(10,10,12,0.92);
-  --muted: rgba(10,10,12,0.60);
+    "services.title": "Servicios",
+    "services.subtitle": "Un stack completo para convertir atención en crecimiento sostenible.",
+    "services.s1.title": "Paid Media & Performance",
+    "services.s1.desc": "Estructura, optimización y escalado en Google Ads y Meta Ads.",
+    "services.s1.tag1": "Google Ads",
+    "services.s1.tag2": "Meta Ads",
+    "services.s1.tag3": "Optimización",
 
-  --bg:#f6f6f8;
-  --surface: rgba(255,255,255,0.58);
-  --stroke: rgba(0,0,0,0.08);
+    "services.s2.title": "Estrategia Digital & Growth",
+    "services.s2.desc": "Oferta, mensaje y funnel. Menos ruido. Más dirección.",
+    "services.s2.tag1": "Funnel",
+    "services.s2.tag2": "Mensajes",
+    "services.s2.tag3": "Roadmap",
 
-  --blur: 18px;
+    "services.s3.title": "Branding, UX & Conversion",
+    "services.s3.desc": "Diseño con intención para elevar percepción y convertir mejor.",
+    "services.s3.tag1": "UX",
+    "services.s3.tag2": "CRO",
+    "services.s3.tag3": "Posicionamiento",
 
-  --shadow: 0 20px 70px rgba(0,0,0,0.10);
-  --shadow-soft: 0 12px 40px rgba(0,0,0,0.08);
+    "method.title": "Método FILTR",
+    "method.desc": "Tres movimientos. Una obsesión: claridad que se convierte en crecimiento.",
+    "method.step1.kicker": "01",
+    "method.step1.title": "Auditar",
+    "method.step1.desc": "Diagnóstico de mensaje, funnel, tracking y fricciones reales.",
+    "method.step2.kicker": "02",
+    "method.step2.title": "Filtrar",
+    "method.step2.desc": "Priorizamos lo que mueve negocio. Lo accesorio se elimina.",
+    "method.step3.kicker": "03",
+    "method.step3.title": "Ejecutar",
+    "method.step3.desc": "Sprints claros, iteración y reporting con foco en impacto.",
 
-  --r-lg: 28px;
-  --r-md: 22px;
-  --r-sm: 16px;
+    "packages.title": "Paquetes",
+    "packages.subtitle": "No vendemos horas. Construimos sistemas de crecimiento.",
+    "packages.from": "Desde",
+    "packages.perMonth": "/ mes",
+    "packages.badge": "Recomendado",
+    "packages.cta": "Agendar llamada",
+    "packages.ctaPrimary": "Elegir Growth",
+    "packages.note": "El presupuesto de Ads se gestiona por separado. Recomendamos un mínimo de 3 meses para consolidar aprendizaje y optimización.",
 
-  --container: 1120px;
+    "packages.good.name": "Essential",
+    "packages.good.tagline": "Base estratégica + 1 canal para ordenar y empezar a rendir.",
+    "packages.good.price": "900€",
+    "packages.good.li1": "Auditoría inicial (web + funnel + Ads)",
+    "packages.good.li2": "Dirección estratégica mensual",
+    "packages.good.li3": "Gestión de 1 canal (Google o Meta)",
+    "packages.good.li4": "Optimización semanal",
+    "packages.good.li5": "Reporte mensual con contexto",
+    "packages.good.foot": "Ideal para negocios premium que necesitan claridad antes de escalar.",
 
-  --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --dur: 800ms;
+    "packages.better.name": "Growth",
+    "packages.better.tagline": "Escalado con intención: estrategia + performance multicanal.",
+    "packages.better.price": "1.500€",
+    "packages.better.li1": "Todo lo de Essential",
+    "packages.better.li2": "Gestión Google Ads + Meta Ads",
+    "packages.better.li3": "Revisión tracking (GA4/GTM/conversiones)",
+    "packages.better.li4": "Testing de mensajes/ángulos",
+    "packages.better.li5": "Reporting avanzado con KPIs de negocio",
+    "packages.better.li6": "Reunión quincenal",
+    "packages.better.foot": "El plan que más recomendamos para crecimiento real y controlado.",
 
-  --g1: radial-gradient(1200px 600px at 20% -10%, rgba(247, 198, 0, 0.24), transparent 55%);
-  --g2: radial-gradient(900px 500px at 85% 0%, rgba(0, 0, 0, 0.06), transparent 60%);
-  --g3: radial-gradient(900px 500px at 70% 110%, rgba(247, 198, 0, 0.12), transparent 55%);
-}
+    "packages.best.name": "Authority",
+    "packages.best.tagline": "Dirección tipo CMO externo + optimización del ecosistema.",
+    "packages.best.price": "2.500€",
+    "packages.best.li1": "Todo lo de Growth",
+    "packages.best.li2": "Posicionamiento y narrativa de marca",
+    "packages.best.li3": "CRO activo sobre activos clave",
+    "packages.best.li4": "Automatización de leads/CRM (básica)",
+    "packages.best.li5": "Dashboard ejecutivo (Looker/GA4)",
+    "packages.best.li6": "Reunión semanal + soporte prioritario",
+    "packages.best.foot": "Para marcas que quieren dominar percepción, demanda y conversión.",
 
-html[data-theme="dark"]{
-  --text: rgba(255,255,255,0.92);
-  --muted: rgba(255,255,255,0.64);
+    "cases.title": "Casos",
+    "cases.desc": "Ejemplos de lo que sucede cuando la claridad guía la ejecución.",
+    "cases.c1.title": "Ecommerce (Paid Media)",
+    "cases.c1.desc": "Estructura por intención + optimización de catálogo y audiencias.",
+    "cases.c1.metric": "+32% ROAS en 60 días",
+    "cases.c2.title": "Servicios profesionales",
+    "cases.c2.desc": "Oferta + landing UX + Ads por etapa del funnel.",
+    "cases.c2.metric": "-28% CPA y +18% conversión",
+    "cases.c3.title": "Marca en expansión",
+    "cases.c3.desc": "Sistema de contenido + performance para escalar sin perder foco.",
+    "cases.c3.metric": "+41% leads cualificados QoQ",
+    "cases.note": "Placeholders hasta que me pases 2–3 casos reales con métricas.",
 
-  --bg:#0b0b0f;
-  --surface: rgba(18,18,24,0.56);
-  --stroke: rgba(255,255,255,0.10);
+    "faq.title": "FAQ",
+    "faq.subtitle": "Respuestas rápidas. Sin letra pequeña.",
+    "faq.q1": "¿Qué tipo de empresas trabajan con FILTR?",
+    "faq.a1": "Marcas que buscan claridad estratégica y crecimiento sostenible, no tácticas aisladas.",
+    "faq.q2": "¿FILTR es una agencia o un partner?",
+    "faq.a2": "Operamos como partner: nos integramos, priorizamos y ejecutamos con tu equipo.",
+    "faq.q3": "¿Cuánto tiempo tarda en verse impacto?",
+    "faq.a3": "Depende del punto de partida. Normalmente hay aprendizajes en semanas y mejoras en el primer ciclo.",
+    "faq.q4": "¿Qué necesito para empezar?",
+    "faq.a4": "Una llamada breve, acceso a datos básicos y claridad sobre objetivos del negocio.",
+    "faq.q5": "¿Trabajan por proyecto o retainer?",
+    "faq.a5": "Ambos: auditoría/estrategia inicial y luego ejecución mensual según necesidades.",
 
-  --shadow: 0 26px 90px rgba(0,0,0,0.60);
-  --shadow-soft: 0 18px 60px rgba(0,0,0,0.45);
+    "contact.title": "Agendar llamada",
+    "contact.desc": "Cuéntanos lo mínimo. En la llamada filtramos el resto.",
+    "contact.cta": "Enviar",
+    "contact.note": "Luego conectamos este formulario a Google Sheets.",
+    "contact.ph.name": "Nombre",
+    "contact.ph.email": "Email corporativo",
+    "contact.ph.phone": "Teléfono (opcional)",
+    "contact.ph.company": "Empresa (opcional)",
 
-  --g1: radial-gradient(1200px 600px at 20% -10%, rgba(247, 198, 0, 0.14), transparent 55%);
-  --g2: radial-gradient(900px 500px at 85% 0%, rgba(255, 255, 255, 0.05), transparent 60%);
-  --g3: radial-gradient(900px 500px at 70% 110%, rgba(247, 198, 0, 0.09), transparent 55%);
-}
+    "footer.note": "© FILTR. Minimal, focused, measurable."
+  },
 
-body::before{
-  content:"";
-  position: fixed;
-  inset:0;
-  background: var(--g1), var(--g2), var(--g3);
-  pointer-events:none;
-  z-index:-2;
-}
-body{
-  background: var(--bg);
-  color: var(--text);
-}
-body::after{
-  content:"";
-  position: fixed;
-  inset:0;
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.20'/%3E%3C/svg%3E");
-  opacity:0.04;
-  pointer-events:none;
-  z-index:-1;
-  mix-blend-mode: overlay;
-}
+  en: {
+    "nav.services": "Services",
+    "nav.method": "Method",
+    "nav.packages": "Packages",
+    "nav.cases": "Work",
+    "nav.faq": "FAQ",
+    "nav.cta": "Book a call",
 
-.container{
-  width: min(var(--container), calc(100% - 40px));
-  margin: 0 auto;
-}
+    "hero.kicker": "Digital Authority System",
+    "hero.title": "We remove the noise so your brand’s authority becomes unmistakable.",
+    "hero.subtitle": "Strategy, performance, and clarity — built for durable growth.",
+    "hero.cta": "Book a call",
+    "hero.secondary": "See the method",
+    "hero.note": "No hype. Just clarity, execution, and measurable outcomes.",
 
-a{ color: inherit; text-decoration:none; }
-a:hover{ opacity:.95; }
+    "hero.panel.title": "Fast start (no friction)",
+    "hero.panel.sub": "A strategic call to understand your context and define next steps.",
+    "hero.panel.chip1": "Strategy",
+    "hero.panel.chip2": "Performance",
+    "hero.panel.chip3": "Clarity",
+    "hero.panel.li1": "Channel, message, and funnel diagnosis",
+    "hero.panel.li2": "Simple roadmap with quick wins",
+    "hero.panel.li3": "Clear decision: fit or no-fit",
+    "hero.panel.cta": "Book now",
 
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  padding:12px 16px;
-  border-radius:999px;
-  border:1px solid var(--stroke);
-  background: var(--surface);
-  backdrop-filter: blur(var(--blur));
-  -webkit-backdrop-filter: blur(var(--blur));
-  box-shadow: var(--shadow-soft);
-  transition: transform 250ms var(--ease), box-shadow 250ms var(--ease), border-color 250ms var(--ease);
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-.btn:hover{ transform: translateY(-1px); box-shadow: var(--shadow); border-color: rgba(247,198,0,0.22); }
-.btn:active{ transform: translateY(0) scale(0.99); }
+    "services.title": "Services",
+    "services.subtitle": "A focused stack to turn attention into sustainable growth.",
+    "services.s1.title": "Paid Media & Performance",
+    "services.s1.desc": "Structure, optimization, and scaling across Google Ads and Meta Ads.",
+    "services.s1.tag1": "Google Ads",
+    "services.s1.tag2": "Meta Ads",
+    "services.s1.tag3": "Optimization",
 
-.btn.primary{
-  background: linear-gradient(180deg, rgba(247,198,0,0.95), rgba(247,198,0,0.75));
-  color: rgba(0,0,0,0.92);
-  border-color: rgba(0,0,0,0.10);
-  box-shadow: 0 20px 70px rgba(247,198,0,0.22);
-}
+    "services.s2.title": "Digital Strategy & Growth",
+    "services.s2.desc": "Offer, messaging, and funnel. Less noise. More direction.",
+    "services.s2.tag1": "Funnel",
+    "services.s2.tag2": "Messaging",
+    "services.s2.tag3": "Roadmap",
 
-.glass{
-  position: relative;
-  background: var(--surface);
-  border: 1px solid var(--stroke);
-  border-radius: var(--r-lg);
-  box-shadow: var(--shadow-soft);
-  backdrop-filter: blur(var(--blur));
-  -webkit-backdrop-filter: blur(var(--blur));
-}
-.glass::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius: inherit;
-  pointer-events:none;
-  background: linear-gradient(
-    135deg,
-    rgba(255,255,255,0.60),
-    rgba(255,255,255,0.14) 30%,
-    rgba(255,255,255,0.06) 60%,
-    rgba(255,255,255,0.00)
-  );
-  opacity:0.30;
-  mask-image: radial-gradient(120% 80% at 20% 0%, black 30%, transparent 70%);
-}
-.glass::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius: inherit;
-  pointer-events:none;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.65), inset 0 -1px 0 rgba(0,0,0,0.06);
-  opacity:0.65;
-}
-html[data-theme="dark"] .glass::before{ opacity:0.22; }
-html[data-theme="dark"] .glass::after{
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.10), inset 0 -1px 0 rgba(0,0,0,0.35);
-  opacity:1;
-}
+    "services.s3.title": "Brand, UX & Conversion",
+    "services.s3.desc": "Design with intent to elevate perception and convert better.",
+    "services.s3.tag1": "UX",
+    "services.s3.tag2": "CRO",
+    "services.s3.tag3": "Positioning",
 
-/* HEADER */
-.header{
-  position: sticky;
-  top: 16px;
-  z-index: 50;
-  margin: 16px auto 0;
-  width: min(var(--container), calc(100% - 24px));
-  border-radius: 999px;
-}
-.header-inner{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding: 10px 16px;
-  gap: 12px;
-}
-.logo-text{
-  font-weight: 850;
-  letter-spacing: -0.05em;
-  font-size: 18px;
-}
-.logo-i,.logo-dot{ color: var(--filtr-yellow); }
+    "method.title": "The FILTR Method",
+    "method.desc": "Three moves. One obsession: clarity that turns into growth.",
+    "method.step1.kicker": "01",
+    "method.step1.title": "Audit",
+    "method.step1.desc": "Message, funnel, tracking, and real friction — mapped precisely.",
+    "method.step2.kicker": "02",
+    "method.step2.title": "Filter",
+    "method.step2.desc": "We prioritize what moves the business. Everything else goes.",
+    "method.step3.kicker": "03",
+    "method.step3.title": "Ship",
+    "method.step3.desc": "Clear sprints, iteration, and reporting focused on impact.",
 
-.nav{
-  display:flex;
-  align-items:center;
-  gap: 16px;
-  padding: 0 8px;
-}
-.nav a{
-  font-weight: 650;
-  font-size: 14px;
-  letter-spacing: -0.01em;
-  color: var(--muted);
-  padding: 10px 10px;
-  border-radius: 999px;
-  transition: background 250ms var(--ease), color 250ms var(--ease);
-}
-.nav a:hover{
-  background: rgba(255,255,255,0.35);
-  color: var(--text);
-}
-html[data-theme="dark"] .nav a:hover{
-  background: rgba(255,255,255,0.08);
-}
+    "packages.title": "Packages",
+    "packages.subtitle": "We don’t sell hours. We build growth systems.",
+    "packages.from": "From",
+    "packages.perMonth": "/ month",
+    "packages.badge": "Most chosen",
+    "packages.cta": "Book a call",
+    "packages.ctaPrimary": "Choose Growth",
+    "packages.note": "Ad spend is managed separately. We recommend a 3-month minimum to consolidate learning and optimization.",
 
-.header-actions{
-  display:flex;
-  align-items:center;
-  gap: 10px;
-}
-#lang-toggle, #theme-toggle{
-  height: 40px;
-  min-width: 44px;
-  padding: 0 12px;
-  border-radius: 999px;
-  border: 1px solid var(--stroke);
-  background: var(--surface);
-  color: var(--text);
-  box-shadow: var(--shadow-soft);
-  backdrop-filter: blur(var(--blur));
-  -webkit-backdrop-filter: blur(var(--blur));
-  cursor:pointer;
-  font-weight: 750;
-  letter-spacing: -0.02em;
-  transition: transform 250ms var(--ease);
-}
-#lang-toggle:hover, #theme-toggle:hover{ transform: translateY(-1px); }
-#lang-toggle:active, #theme-toggle:active{ transform: translateY(0) scale(0.99); }
+    "packages.good.name": "Essential",
+    "packages.good.tagline": "Strategic foundation + one channel for order and traction.",
+    "packages.good.price": "€900",
+    "packages.good.li1": "Initial audit (site + funnel + ads)",
+    "packages.good.li2": "Monthly strategic direction",
+    "packages.good.li3": "1 channel management (Google or Meta)",
+    "packages.good.li4": "Weekly optimization",
+    "packages.good.li5": "Monthly report with context",
+    "packages.good.foot": "Best for premium services needing clarity before scaling.",
 
-/* SECTIONS */
-.section{ padding: 96px 0; }
-.section h2{
-  font-size: clamp(22px, 3vw, 34px);
-  line-height: 1.15;
-  letter-spacing: -0.05em;
-  font-weight: 850;
-  margin:0;
-}
-.section p{
-  margin: 12px 0 0;
-  color: var(--muted);
-  line-height: 1.6;
-  max-width: 72ch;
-}
+    "packages.better.name": "Growth",
+    "packages.better.tagline": "Scale with intent: strategy + multi-channel performance.",
+    "packages.better.price": "€1,500",
+    "packages.better.li1": "Everything in Essential",
+    "packages.better.li2": "Google Ads + Meta Ads management",
+    "packages.better.li3": "Tracking review (GA4/GTM/conversions)",
+    "packages.better.li4": "Messaging/angle testing",
+    "packages.better.li5": "Business KPI reporting",
+    "packages.better.li6": "Bi-weekly strategy call",
+    "packages.better.foot": "Our default recommendation for real, controlled growth.",
 
-.section.dark{
-  background: transparent;
-  border: none;
-}
-.section.dark .container{
-  padding: 26px;
-  border-radius: var(--r-lg);
-  background: var(--surface);
-  border: 1px solid var(--stroke);
-  box-shadow: var(--shadow-soft);
-  backdrop-filter: blur(var(--blur));
-  -webkit-backdrop-filter: blur(var(--blur));
-}
-
-/* HERO */
-.hero{ padding: 110px 0 72px; }
-.hero-grid{
-  display:grid;
-  grid-template-columns: 1.2fr .8fr;
-  gap: 22px;
-  align-items: start;
-}
-.kicker{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding: 8px 12px;
-  border-radius: 999px;
-  border: 1px solid var(--stroke);
-  background: var(--surface);
-  box-shadow: var(--shadow-soft);
-  backdrop-filter: blur(var(--blur));
-  -webkit-backdrop-filter: blur(var(--blur));
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.10em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 14px;
-}
-.kicker::before{
-  content:"";
-  width: 10px; height: 10px;
-  border-radius: 999px;
-  background: var(--filtr-yellow);
-  box-shadow: 0 10px 26px rgba(247,198,0,0.35);
-}
-.hero h1{
-  margin:0;
-  font-size: clamp(34px, 5vw, 56px);
-  line-height: 1.03;
-  letter-spacing: -0.06em;
-  font-weight: 900;
-  max-width: 22ch;
-}
-.hero p{
-  margin-top: 16px;
-  font-size: 15.5px;
-  line-height: 1.65;
-  color: var(--muted);
-  max-width: 62ch;
-}
-.hero-actions{
-  display:flex;
-  gap:12px;
-  align-items:center;
-  flex-wrap:wrap;
-  margin-top: 22px;
-}
-.hero-note{
-  margin-top: 14px;
-  font-size: 13px;
-  color: var(--muted);
-}
-
-.hero-panel{
-  padding: 18px;
-  border-radius: var(--r-lg);
-}
-.hero-panel-top{
-  margin-bottom: 12px;
-}
-.hero-panel-title{
-  font-weight: 900;
-  letter-spacing: -0.03em;
-}
-.hero-panel-sub{
-  margin-top: 6px;
-  color: var(--muted);
-  line-height: 1.55;
-  font-size: 14px;
-}
-.chips{
-  display:flex;
-  flex-wrap:wrap;
-  gap: 8px;
-  margin-top: 12px;
-}
-.chip{
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  padding: 8px 10px;
-  border-radius: 999px;
-  border: 1px solid var(--stroke);
-  background: rgba(255,255,255,0.35);
-}
-html[data-theme="dark"] .chip{
-  background: rgba(255,255,255,0.06);
-}
-.mini-divider{
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.10), transparent);
-  margin: 14px 0;
-}
-html[data-theme="dark"] .mini-divider{
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
-}
-.hero-panel-list{
-  display:grid;
-  gap: 10px;
-  color: var(--muted);
-  font-size: 13.5px;
-  line-height: 1.55;
-}
-.tick{
-  display:flex;
-  align-items:flex-start;
-  gap:10px;
-}
-.tick-dot{
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  background: rgba(0,0,0,0.14);
-  margin-top: 4px;
-}
-html[data-theme="dark"] .tick-dot{
-  background: rgba(255,255,255,0.12);
-}
-.hero-panel-cta{
-  margin-top: 16px;
-  width: 100%;
-}
-
-/* COMMON CARD SYSTEM */
-.cards-3{
-  margin-top: 22px;
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-.card{
-  padding: 18px;
-  border-radius: 26px;
-  min-height: 170px;
-  transition: transform 250ms var(--ease), box-shadow 250ms var(--ease), border-color 250ms var(--ease);
-}
-.card:hover{
-  transform: translateY(-1px);
-  box-shadow: var(--shadow);
-  border-color: rgba(247,198,0,0.22);
-}
-.card-title{
-  font-weight: 900;
-  letter-spacing: -0.03em;
-  margin-top: 10px;
-}
-.card-desc{
-  color: var(--muted);
-  line-height: 1.6;
-  font-weight: 520;
-  margin-top: 8px;
-  font-size: 14.5px;
-}
-
-/* ICONS (FIXES THE "HUGE ICON" PROBLEM) */
-.icon-wrap{
-  width: 52px;
-  height: 52px;
-  border-radius: 18px;
-  border: 1px solid var(--stroke);
-  background: rgba(255,255,255,0.35);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow: var(--shadow-soft);
-}
-html[data-theme="dark"] .icon-wrap{
-  background: rgba(255,255,255,0.06);
-}
-.icon{
-  width: 28px;
-  height: 28px;
-  color: rgba(10,10,12,0.82);
-}
-html[data-theme="dark"] .icon{
-  color: rgba(255,255,255,0.84);
-}
-
-/* TAGS */
-.tag-row{
-  display:flex;
-  flex-wrap:wrap;
-  gap: 8px;
-  margin-top: 14px;
-}
-.tag{
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  padding: 8px 10px;
-  border-radius: 999px;
-  border: 1px solid var(--stroke);
-  background: rgba(255,255,255,0.35);
-}
-html[data-theme="dark"] .tag{
-  background: rgba(255,255,255,0.06);
-}
-
-/* METHOD */
-.method-cards .card-step{
-  min-height: 150px;
-}
-.step-kicker{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  font-weight: 900;
-  color: var(--filtr-yellow);
-  letter-spacing: -0.02em;
-}
-
-/* PRICING */
-.pricing{
-  margin-top: 22px;
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-  align-items: stretch;
-}
-.price-card{
-  padding: 18px;
-  border-radius: 28px;
-  min-height: 420px;
-  display:flex;
-  flex-direction: column;
-  transition: transform 250ms var(--ease), box-shadow 250ms var(--ease), border-color 250ms var(--ease);
-}
-.price-card:hover{
-  transform: translateY(-1px);
-  box-shadow: var(--shadow);
-  border-color: rgba(247,198,0,0.22);
-}
-.price-head{
-  display:flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.price-icon{
-  width: 52px;
-  height: 52px;
-  border-radius: 18px;
-  border: 1px solid var(--stroke);
-  background: rgba(255,255,255,0.35);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow: var(--shadow-soft);
-}
-html[data-theme="dark"] .price-icon{
-  background: rgba(255,255,255,0.06);
-}
-.price-name{
-  font-weight: 950;
-  letter-spacing: -0.03em;
-  margin-top: 6px;
-}
-.price-tagline{
-  color: var(--muted);
-  line-height: 1.55;
-  font-size: 14px;
-}
-
-.price{
-  margin-top: 14px;
-  display:flex;
-  align-items: baseline;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-.price-from{
-  color: var(--muted);
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-.price-value{
-  font-size: 34px;
-  font-weight: 950;
-  letter-spacing: -0.04em;
-}
-.price-period{
-  color: var(--muted);
-  font-weight: 700;
-}
-
-.price-list{
-  margin-top: 14px;
-  display:grid;
-  gap: 10px;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.55;
-}
-.price-list .li{
-  position: relative;
-  padding-left: 18px;
-}
-.price-list .li::before{
-  content:"";
-  position:absolute;
-  left:0;
-  top: 8px;
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-  background: rgba(0,0,0,0.14);
-}
-html[data-theme="dark"] .price-list .li::before{
-  background: rgba(255,255,255,0.12);
-}
-.price-cta{
-  margin-top: auto;
-  width: 100%;
-}
-.price-foot{
-  margin-top: 10px;
-  font-size: 12.5px;
-  color: var(--muted);
-  line-height: 1.5;
-}
-
-.featured{
-  border-color: rgba(247,198,0,0.35);
-  box-shadow: 0 26px 90px rgba(247,198,0,0.18);
-}
-.badge{
-  position:absolute;
-  top: 14px;
-  right: 14px;
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 8px 10px;
-  border-radius: 999px;
-  background: rgba(247,198,0,0.20);
-  border: 1px solid rgba(247,198,0,0.35);
-}
-
-.packages-note{
-  margin-top: 14px;
-  font-size: 13px;
-  color: var(--muted);
-}
-
-/* CASES */
-.card-case .case-title{
-  font-weight: 950;
-  letter-spacing: -0.03em;
-}
-.card-case .case-desc{
-  margin-top: 10px;
-  color: var(--muted);
-  line-height: 1.6;
-  font-size: 14.5px;
-}
-.card-case .case-metric{
-  margin-top: 14px;
-  font-weight: 950;
-  letter-spacing: -0.03em;
-}
-
-/* FAQ */
-.faq{
-  margin-top: 24px;
-  display:grid;
-  gap: 10px;
-}
-.faq-item{ padding: 0; overflow: hidden; border-radius: 22px; }
-.faq-question{
-  all: unset;
-  width: 100%;
-  padding: 16px 18px;
-  font-weight: 850;
-  letter-spacing: -0.02em;
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-.faq-question::after{
-  content:"+";
-  font-size: 20px;
-  transition: transform 300ms var(--ease);
-  color: var(--muted);
-}
-.faq-item.open .faq-question::after{ transform: rotate(45deg); }
-.faq-answer{
-  max-height: 0;
-  overflow: hidden;
-  padding: 0 18px;
-  color: var(--muted);
-  transition: max-height 420ms var(--ease), padding 420ms var(--ease);
-  font-size: 14.5px;
-  line-height: 1.6;
-}
-.faq-item.open .faq-answer{
-  max-height: 260px;
-  padding: 0 18px 18px;
-}
-
-/* FORM */
-form.glass{
-  margin-top: 20px;
-  padding: 16px;
-  border-radius: var(--r-lg);
-  display:grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 12px;
-}
-input{
-  grid-column: span 6;
-  height: 48px;
-  padding: 0 14px;
-  border-radius: 18px;
-  border: 1px solid var(--stroke);
-  background: rgba(255,255,255,0.55);
-  color: var(--text);
-  outline:none;
-  transition: border-color 200ms var(--ease), background 200ms var(--ease);
-}
-html[data-theme="dark"] input{ background: rgba(0,0,0,0.18); }
-input:focus{
-  border-color: rgba(247,198,0,0.75);
-  box-shadow: 0 0 0 6px rgba(247,198,0,0.14);
-}
-form .btn.primary{
-  grid-column: span 12;
-  height: 48px;
-}
-
-.small-note{
-  margin-top: 12px;
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.55;
-}
-
-/* FOOTER */
-.footer{
-  padding: 34px 0 60px;
-}
-.footer-inner{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-.footer-brand{
-  font-weight: 950;
-  letter-spacing: -0.04em;
-}
-.footer-note{
-  color: var(--muted);
-  font-size: 13px;
-}
-
-/* REVEAL */
-.reveal{
-  opacity:0;
-  transform: translateY(14px);
-  filter: blur(10px);
-  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease), filter var(--dur) var(--ease);
-  will-change: opacity, transform, filter;
-}
-.reveal.active{
-  opacity:1;
-  transform: translateY(0);
-  filter: blur(0);
-}
-
-html{ scroll-behavior: smooth; }
-
-@media (max-width: 980px){
-  .nav{ display:none; }
-  .hero-grid{ grid-template-columns: 1fr; }
-  .cards-3, .pricing{ grid-template-columns: 1fr; }
-  input{ grid-column: span 12; }
-  .section.dark .container{ padding: 18px; }
-}
-
-@media (prefers-reduced-motion: reduce){
-  *{ transition:none !important; scroll-behavior:auto !important; }
-  .reveal{ opacity:1; transform:none; filter:none; }
-}
+    "packages.best.name": "Authority",
+    "packages.best.tagline": "CMO-level direction + ecosystem optimization.",
+    "packages.best.price": "€2,500",
+    "packages.best.li1": "Everything in Growth",
+    "packages.best.li2": "Positioning and brand narrative",
+    "packages.best.li3": "Active CRO on key assets",
+    "packages.best.li4": "Lead/CRM automation (basic)",
+    "packages.best.li5": "Executive dashboard (Looker/GA4)",
+    "packages.best.li6": "Weekly call + priority support",
+    "packages.best.foot": "

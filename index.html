@@ -7,33 +7,34 @@
   <title>FILTR — Digital Marketing Agency</title>
   <meta name="description" content="We remove the noise so your brand’s authority becomes unmistakable." />
 
-  <!-- Fonts -->
+  <meta property="og:title" content="FILTR — Digital Marketing Agency" />
+  <meta property="og:description" content="We remove the noise so your brand’s authority becomes unmistakable." />
+  <meta property="og:type" content="website" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
-  <!-- Styles -->
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 
 <body>
-
   <!-- HEADER -->
   <header class="header glass">
     <div class="container header-inner">
       <span class="logo-text">F<span class="logo-i">i</span>LTR<span class="logo-dot">.</span></span>
 
       <nav class="nav">
-        <a href="#servicios" data-i18n="nav.services">Servicios</a>
-        <a href="#metodo" data-i18n="nav.method">Método</a>
-        <a href="#casos" data-i18n="nav.cases">Casos</a>
-        <a href="#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="#servicios" data-i18n="nav.services"></a>
+        <a href="#metodo" data-i18n="nav.method"></a>
+        <a href="#casos" data-i18n="nav.cases"></a>
+        <a href="#faq" data-i18n="nav.faq"></a>
       </nav>
 
       <div class="header-actions">
         <button id="lang-toggle">EN</button>
         <button id="theme-toggle">☾</button>
-        <a href="#contacto" class="btn primary" data-i18n="nav.cta">Agendar llamada</a>
+        <a href="#contacto" class="btn primary" data-i18n="nav.cta"></a>
       </div>
     </div>
   </header>
@@ -43,7 +44,13 @@
     <div class="container">
       <h1 data-i18n="hero.title"></h1>
       <p data-i18n="hero.subtitle"></p>
-      <a href="#contacto" class="btn primary" data-i18n="hero.cta"></a>
+
+      <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:22px;">
+        <a href="#contacto" class="btn primary" data-i18n="hero.cta"></a>
+        <a href="#metodo" class="btn" data-i18n="hero.secondary"></a>
+      </div>
+
+      <p style="margin-top:14px; font-size:13px; color: var(--muted);" data-i18n="hero.note"></p>
     </div>
   </section>
 
@@ -51,10 +58,23 @@
   <section id="servicios" class="section reveal">
     <div class="container">
       <h2 data-i18n="services.title"></h2>
-      <div class="grid">
-        <div class="card glass" data-i18n="services.s1"></div>
-        <div class="card glass" data-i18n="services.s2"></div>
-        <div class="card glass" data-i18n="services.s3"></div>
+      <p data-i18n="services.subtitle"></p>
+
+      <div class="grid" style="margin-top:22px;">
+        <div class="card glass" style="display:block; padding:18px;">
+          <div style="font-weight:800; margin-bottom:6px;" data-i18n="services.s1.title"></div>
+          <div style="color: var(--muted); font-weight:500; line-height:1.55;" data-i18n="services.s1.desc"></div>
+        </div>
+
+        <div class="card glass" style="display:block; padding:18px;">
+          <div style="font-weight:800; margin-bottom:6px;" data-i18n="services.s2.title"></div>
+          <div style="color: var(--muted); font-weight:500; line-height:1.55;" data-i18n="services.s2.desc"></div>
+        </div>
+
+        <div class="card glass" style="display:block; padding:18px;">
+          <div style="font-weight:800; margin-bottom:6px;" data-i18n="services.s3.title"></div>
+          <div style="color: var(--muted); font-weight:500; line-height:1.55;" data-i18n="services.s3.desc"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -64,6 +84,26 @@
     <div class="container">
       <h2 data-i18n="method.title"></h2>
       <p data-i18n="method.desc"></p>
+
+      <div class="grid" style="margin-top:24px;">
+        <div class="card glass" style="grid-column: span 4; display:block; padding:18px;">
+          <div style="color: var(--filtr-yellow); font-weight:800; letter-spacing:-0.02em;" data-i18n="method.step1.kicker"></div>
+          <div style="font-weight:800; margin:10px 0 6px;" data-i18n="method.step1.title"></div>
+          <div style="color: var(--muted); font-weight:500; line-height:1.55;" data-i18n="method.step1.desc"></div>
+        </div>
+
+        <div class="card glass" style="grid-column: span 4; display:block; padding:18px;">
+          <div style="color: var(--filtr-yellow); font-weight:800; letter-spacing:-0.02em;" data-i18n="method.step2.kicker"></div>
+          <div style="font-weight:800; margin:10px 0 6px;" data-i18n="method.step2.title"></div>
+          <div style="color: var(--muted); font-weight:500; line-height:1.55;" data-i18n="method.step2.desc"></div>
+        </div>
+
+        <div class="card glass" style="grid-column: span 4; display:block; padding:18px;">
+          <div style="color: var(--filtr-yellow); font-weight:800; letter-spacing:-0.02em;" data-i18n="method.step3.kicker"></div>
+          <div style="font-weight:800; margin:10px 0 6px;" data-i18n="method.step3.title"></div>
+          <div style="color: var(--muted); font-weight:500; line-height:1.55;" data-i18n="method.step3.desc"></div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -72,6 +112,28 @@
     <div class="container">
       <h2 data-i18n="cases.title"></h2>
       <p data-i18n="cases.desc"></p>
+
+      <div class="grid" style="margin-top:22px;">
+        <div class="card glass" style="grid-column: span 4; display:block; padding:18px;">
+          <div style="font-weight:800;" data-i18n="cases.c1.title"></div>
+          <div style="margin-top:10px; color:var(--muted); line-height:1.55;" data-i18n="cases.c1.desc"></div>
+          <div style="margin-top:14px; font-weight:800;" data-i18n="cases.c1.metric"></div>
+        </div>
+
+        <div class="card glass" style="grid-column: span 4; display:block; padding:18px;">
+          <div style="font-weight:800;" data-i18n="cases.c2.title"></div>
+          <div style="margin-top:10px; color:var(--muted); line-height:1.55;" data-i18n="cases.c2.desc"></div>
+          <div style="margin-top:14px; font-weight:800;" data-i18n="cases.c2.metric"></div>
+        </div>
+
+        <div class="card glass" style="grid-column: span 4; display:block; padding:18px;">
+          <div style="font-weight:800;" data-i18n="cases.c3.title"></div>
+          <div style="margin-top:10px; color:var(--muted); line-height:1.55;" data-i18n="cases.c3.desc"></div>
+          <div style="margin-top:14px; font-weight:800;" data-i18n="cases.c3.metric"></div>
+        </div>
+      </div>
+
+      <p style="margin-top:14px; font-size:13px; color:var(--muted);" data-i18n="cases.note"></p>
     </div>
   </section>
 
@@ -79,6 +141,7 @@
   <section id="faq" class="section reveal">
     <div class="container">
       <h2 data-i18n="faq.title"></h2>
+      <p data-i18n="faq.subtitle"></p>
 
       <div class="faq">
         <div class="faq-item glass">
@@ -100,6 +163,11 @@
           <button class="faq-question" data-i18n="faq.q4"></button>
           <div class="faq-answer" data-i18n="faq.a4"></div>
         </div>
+
+        <div class="faq-item glass">
+          <button class="faq-question" data-i18n="faq.q5"></button>
+          <div class="faq-answer" data-i18n="faq.a5"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -108,18 +176,28 @@
   <section id="contacto" class="section dark reveal">
     <div class="container">
       <h2 data-i18n="contact.title"></h2>
+      <p data-i18n="contact.desc"></p>
 
       <form id="contact-form" class="glass">
-        <input type="text" required data-i18n-placeholder="contact.ph.name" />
-        <input type="email" required data-i18n-placeholder="contact.ph.email" />
-        <input type="tel" data-i18n-placeholder="contact.ph.phone" />
-        <input type="text" data-i18n-placeholder="contact.ph.company" />
-        <button class="btn primary" data-i18n="contact.cta"></button>
+        <input type="text" required name="name" data-i18n-placeholder="contact.ph.name" />
+        <input type="email" required name="email" data-i18n-placeholder="contact.ph.email" />
+        <input type="tel" name="phone" data-i18n-placeholder="contact.ph.phone" />
+        <input type="text" name="company" data-i18n-placeholder="contact.ph.company" />
+        <button class="btn primary" data-i18n="contact.cta" type="submit"></button>
       </form>
+
+      <p style="margin-top:12px; font-size:13px; color:var(--muted);" data-i18n="contact.note"></p>
     </div>
   </section>
 
-  <!-- JS -->
+  <!-- FOOTER -->
+  <footer class="section" style="padding: 34px 0 60px;">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap;">
+      <div style="font-weight:800; letter-spacing:-0.03em;">FILTR<span style="color: var(--filtr-yellow);">.</span></div>
+      <div style="color: var(--muted); font-size:13px;" data-i18n="footer.note"></div>
+    </div>
+  </footer>
+
   <script src="assets/js/i18n.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
